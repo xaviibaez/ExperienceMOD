@@ -2,13 +2,18 @@ package com.xavitoim.experiencemod.events;
 
 import com.xavitoim.experiencemod.ExperienceMod;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.player.AbstractClientPlayerEntity;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraft.stats.ServerStatisticsManager;
 import net.minecraft.stats.StatisticsManager;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -22,14 +27,19 @@ public class ExperienceEvent {
     @SubscribeEvent
     public static void testJumpEvent(LivingJumpEvent event) {
         if(activated) {
-            ExperienceMod.LOGGER.info("testJumpEvent fired");
-            LivingEntity livingEntity = event.getEntityLiving();
-            World world = livingEntity.getEntityWorld();
+            LivingEntity player = event.getEntityLiving();
+            World world = player.getEntityWorld();
 
-            if(!world.isRemote){
-                ClientPlayerEntity player = null;
-                StatisticsManager s = player.getStats();
-                ExperienceMod.LOGGER.info(s);
+            if(player instanceof PlayerEntity){
+                ExperienceMod.LOGGER.info("Player entity check");
+                if(player instanceof ServerPlayerEntity){
+                    ServerStatisticsManager s = ((ServerPlayerEntity)player).getStats();
+                    //I need to know how to get the jumps made on the s.getValue()
+
+                    //s.getValue();
+                    ExperienceMod.LOGGER.info("TEST - " + s);
+                }
+                //((PlayerEntity) player).abilities.setWalkSpeed(((PlayerEntity) player).abilities.getWalkSpeed() * 2);
             }
         }
     }
