@@ -42,7 +42,7 @@ public class ExperienceEvent {
 
                     //TODO Ver Hierarchy
                     ExperienceMod.LOGGER.info("Jumps Made - " + jumpsMade);
-                    ExperienceMod.LOGGER.info("Distance traveled - " + jumpsMade);
+                    ExperienceMod.LOGGER.info("Distance traveled - " + distanceTraveled);
                 }
                 //((PlayerEntity) player).abilities.setWalkSpeed(((PlayerEntity) player).abilities.getWalkSpeed() * 2);
             }
