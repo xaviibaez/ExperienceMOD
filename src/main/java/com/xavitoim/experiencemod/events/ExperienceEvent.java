@@ -37,7 +37,12 @@ public class ExperienceEvent {
                     ServerStatisticsManager statisticsFromPlayer = ((ServerPlayerEntity)player).getStats();
 
                     int jumpsMade = statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.JUMP));
-                    ExperienceMod.LOGGER.info("TEST - " + jumpsMade);
+                    int distanceTraveled = statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.WALK_ONE_CM)) +
+                            statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.SPRINT_ONE_CM));
+
+                    //TODO Ver Hierarchy
+                    ExperienceMod.LOGGER.info("Jumps Made - " + jumpsMade);
+                    ExperienceMod.LOGGER.info("Distance traveled - " + jumpsMade);
                 }
                 //((PlayerEntity) player).abilities.setWalkSpeed(((PlayerEntity) player).abilities.getWalkSpeed() * 2);
             }
