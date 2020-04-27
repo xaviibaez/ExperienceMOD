@@ -1,5 +1,6 @@
 package com.xavitoim.experiencemod.events;
 
+import com.ibm.icu.impl.ICURWLock;
 import com.xavitoim.experiencemod.ExperienceMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.AbstractClientPlayerEntity;
@@ -9,8 +10,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.stats.ServerStatisticsManager;
-import net.minecraft.stats.StatisticsManager;
+import net.minecraft.stats.*;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -33,11 +34,10 @@ public class ExperienceEvent {
             if(player instanceof PlayerEntity){
                 ExperienceMod.LOGGER.info("Player entity check");
                 if(player instanceof ServerPlayerEntity){
-                    ServerStatisticsManager s = ((ServerPlayerEntity)player).getStats();
-                    //I need to know how to get the jumps made on the s.getValue()
+                    ServerStatisticsManager statisticsFromPlayer = ((ServerPlayerEntity)player).getStats();
 
-                    //s.getValue();
-                    ExperienceMod.LOGGER.info("TEST - " + s);
+                    int jumpsMade = statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.JUMP));
+                    ExperienceMod.LOGGER.info("TEST - " + jumpsMade);
                 }
                 //((PlayerEntity) player).abilities.setWalkSpeed(((PlayerEntity) player).abilities.getWalkSpeed() * 2);
             }
