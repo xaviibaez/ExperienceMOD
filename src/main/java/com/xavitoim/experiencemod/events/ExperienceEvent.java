@@ -4,6 +4,8 @@ import com.xavitoim.experiencemod.ExperienceMod;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.stats.*;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
@@ -27,12 +29,16 @@ public class ExperienceEvent {
                     ServerStatisticsManager statisticsFromPlayer = ((ServerPlayerEntity)player).getStats();
 
                     int jumpsMade = statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.JUMP));
-                    int distanceTraveled = statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.WALK_ONE_CM)) +
-                            statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.SPRINT_ONE_CM));
+                    //int distanceTraveled = statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.WALK_ONE_CM)) +
+                    //        statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.SPRINT_ONE_CM));
+
+                    if(jumpsMade >= 100){
+                        player.addPotionEffect(new
+                                EffectInstance(Effects.JUMP_BOOST, 100, 1));
+                    }
 
                     //TODO Ver Hierarchy
                     ExperienceMod.LOGGER.info("Jumps Made - " + jumpsMade);
-                    ExperienceMod.LOGGER.info("Distance traveled - " + distanceTraveled);
                 }
                 //((PlayerEntity) player).abilities.setWalkSpeed(((PlayerEntity) player).abilities.getWalkSpeed() * 2);
             }
