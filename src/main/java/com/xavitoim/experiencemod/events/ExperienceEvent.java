@@ -34,7 +34,7 @@ public class ExperienceEvent {
 
                     if(jumpsMade >= 100){
                         player.addPotionEffect(new
-                                EffectInstance(Effects.JUMP_BOOST, 100, 1));
+                                EffectInstance(Effects.JUMP_BOOST, Integer.MAX_VALUE, 1));
                     }
 
                     //TODO Ver Hierarchy
