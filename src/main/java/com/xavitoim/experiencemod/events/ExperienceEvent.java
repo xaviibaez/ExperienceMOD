@@ -35,6 +35,8 @@ public class ExperienceEvent {
                     if(jumpsMade >= 100){
                         player.addPotionEffect(new
                                 EffectInstance(Effects.JUMP_BOOST, Integer.MAX_VALUE, 1));
+
+                        //((PlayerEntity) player).abilities.setWalkSpeed(((PlayerEntity) player).abilities.getWalkSpeed() * 2);
                     }
 
                     //TODO Ver Hierarchy
