@@ -10,12 +10,15 @@ import net.minecraft.potion.Effects;
 import net.minecraft.stats.ServerStatisticsManager;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDestroyBlockEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod.EventBusSubscriber(modid = ExperienceMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class HasteEvent {
@@ -23,25 +26,25 @@ public class HasteEvent {
     private static boolean messageSend;
 
     @SubscribeEvent
-    public static void hasteEvent(LivingDestroyBlockEvent event) {
+    public static void hasteEvent(BlockEvent.BreakEvent event) {
         if(activated) {
-            LivingEntity player = event.getEntityLiving();
+
+            LivingEntity player = event.getPlayer();
             World world = player.getEntityWorld();
 
             ExperienceMod.LOGGER.info("player haste" + player.getClass());
 
 
-            if(player instanceof PlayerEntity){
-                if(player instanceof ServerPlayerEntity){
-                    ExperienceMod.LOGGER.info("check");
+            if(player instanceof ServerPlayerEntity){
+                ExperienceMod.LOGGER.info("check");
 
-                    ServerStatisticsManager statisticsFromPlayer = ((ServerPlayerEntity)player).getStats();
+                ServerStatisticsManager statisticsFromPlayer = ((ServerPlayerEntity)player).getStats();
 
-                    int blocksBreak = statisticsFromPlayer.getValue(Stats.BLOCK_MINED.get(Block.getStateById(173).getBlock()));
+                int blocksBreak = statisticsFromPlayer.getValue(Stats.BLOCK_MINED.get(Block.getStateById(173).getBlock()));
 
-                    ExperienceMod.LOGGER.info("Blocks destroyed - " + blocksBreak);
-                }
+                ExperienceMod.LOGGER.info("Blocks destroyed - " + blocksBreak);
             }
+
         }
     }
 }
