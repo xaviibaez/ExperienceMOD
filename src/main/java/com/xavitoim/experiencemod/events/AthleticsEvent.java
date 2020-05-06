@@ -36,6 +36,7 @@ public class AthleticsEvent {
                     if(jumpsMade >= 300){
                         if(!messageSend){
                             ((ServerPlayerEntity) player).sendStatusMessage(new TranslationTextComponent("Your jump level is activated"), false);
+                            ExperienceMod.LOGGER.info("Jumps Made - " + jumpsMade);
                         }
                         player.addPotionEffect(new
                                 EffectInstance(Effects.JUMP_BOOST, 50, jumpsMade/100000));
@@ -44,14 +45,12 @@ public class AthleticsEvent {
                     if(distanceTraveled >= 5000){
                         if(!messageSend){
                             ((ServerPlayerEntity) player).sendStatusMessage(new TranslationTextComponent("Your run level is activated"), false);
+                            ExperienceMod.LOGGER.info("Distance Traveled - " + distanceTraveled);
                             messageSend = true;
                         }
                         player.addPotionEffect(new
                                 EffectInstance(Effects.SPEED, 50, distanceTraveled/100000));
                     }
-
-                    ExperienceMod.LOGGER.info("Jumps Made - " + jumpsMade);
-                    ExperienceMod.LOGGER.info("Distance Traveled - " + distanceTraveled);
                 }
             }
         }
