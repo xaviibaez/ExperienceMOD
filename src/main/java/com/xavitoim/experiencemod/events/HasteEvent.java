@@ -38,7 +38,7 @@ public class HasteEvent {
 
 
 
-                //TODO implemnt more ores
+                //TODO implemnet more ores
                 int cobbleBreak = statisticsFromPlayer.getValue(Stats.BLOCK_MINED.get(Blocks.COBBLESTONE));
                 int bedrockBreak = statisticsFromPlayer.getValue(Stats.BLOCK_MINED.get(Blocks.BEDROCK));
                 int coalBreak = statisticsFromPlayer.getValue(Stats.BLOCK_MINED.get(Blocks.COAL_ORE));
@@ -57,7 +57,8 @@ public class HasteEvent {
                 }
                 */
 
-                if(blocksBreak >= 100){
+                //TODO ajustar numeros
+                if(blocksBreak >= 5){
                     if(!messageSend){
                         ((ServerPlayerEntity) player).sendStatusMessage(new TranslationTextComponent("Your haste level is activated"), false);
                         ExperienceMod.LOGGER.info("Blocks destroyed - " + blocksBreak);
