@@ -15,9 +15,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.ForgeRegistries;
 
+import java.io.BufferedWriter;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Mod.EventBusSubscriber(modid = ExperienceMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class HasteEvent {
@@ -32,40 +37,27 @@ public class HasteEvent {
             World world = player.getEntityWorld();
 
             if(player instanceof ServerPlayerEntity){
-                ExperienceMod.LOGGER.info("check");
-
                 ServerStatisticsManager statisticsFromPlayer = ((ServerPlayerEntity) player).getStats();
 
-
-
-                //TODO implemnet more ores
-                int cobbleBreak = statisticsFromPlayer.getValue(Stats.BLOCK_MINED.get(Blocks.COBBLESTONE));
-                int bedrockBreak = statisticsFromPlayer.getValue(Stats.BLOCK_MINED.get(Blocks.BEDROCK));
-                int coalBreak = statisticsFromPlayer.getValue(Stats.BLOCK_MINED.get(Blocks.COAL_ORE));
-
-                int blocksBreak = cobbleBreak + bedrockBreak + coalBreak;
-
-                //TODO intentar buscar la lista ya hecha de blocks (Blocks.java)
-                /*
-                List<Block> listBlocksBreak = new ArrayList<>();
-                int blocksBreak = 0;
+                Collection collectionOfBlocks =  ForgeRegistries.BLOCKS.getValues();
+                List<Block> listBlocksBreak = new ArrayList<>(collectionOfBlocks);
+                int blocksBreakRock = 0;
 
                 for(Block b : listBlocksBreak){
                     if(b.getMaterial(b.getDefaultState()) == Material.ROCK){
-                        blocksBreak = blocksBreak + statisticsFromPlayer.getValue(Stats.BLOCK_MINED.get(b));
+                        blocksBreakRock = blocksBreakRock + statisticsFromPlayer.getValue(Stats.BLOCK_MINED.get(b));
                     }
                 }
-                */
 
                 //TODO ajustar numeros
-                if(blocksBreak >= 5){
+                if(blocksBreakRock >= 5){
                     if(!messageSend){
                         ((ServerPlayerEntity) player).sendStatusMessage(new TranslationTextComponent("Your haste level is activated"), false);
-                        ExperienceMod.LOGGER.info("Blocks destroyed - " + blocksBreak);
+                        ExperienceMod.LOGGER.info("Blocks destroyed - " + blocksBreakRock);
                         messageSend = true;
                     }
                     player.addPotionEffect(new
-                            EffectInstance(Effects.HASTE, 50, blocksBreak/100000));
+                            EffectInstance(Effects.HASTE, 50, blocksBreakRock/100000));
                 }
             }
         }
