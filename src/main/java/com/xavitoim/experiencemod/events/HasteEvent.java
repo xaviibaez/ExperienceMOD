@@ -27,9 +27,7 @@ public class HasteEvent {
     @SubscribeEvent
     public static void hasteEvent(BreakEvent event) {
         if(activated) {
-
             LivingEntity player = event.getPlayer();
-            World world = player.getEntityWorld();
 
             if(player instanceof ServerPlayerEntity){
                 ServerStatisticsManager statisticsFromPlayer = ((ServerPlayerEntity) player).getStats();
@@ -44,8 +42,7 @@ public class HasteEvent {
                     }
                 }
 
-                //TODO ajustar numeros
-                if(blocksBreakRock >= 5){
+                if(blocksBreakRock >= 100){
                     if(!messageSend){
                         ((ServerPlayerEntity) player).sendStatusMessage(new TranslationTextComponent("Your haste level is activated"), false);
                         ExperienceMod.LOGGER.info("Blocks destroyed - " + blocksBreakRock);
