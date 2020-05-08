@@ -37,12 +37,14 @@ public class CombatEvent {
                 List<Entity> listEntities = new ArrayList<>(collectionOfEntities);
                 int creaturesKilled = 0;
 
+                //TODO probar a ve si va. PONER CHECKS!
                 for(Entity e : listEntities){
                     if(!e.getType().getClassification().getPeacefulCreature()){
                         creaturesKilled = creaturesKilled + statisticsFromPlayer.getValue(Stats.ENTITY_KILLED.get(e.getType()));
                     }
                 }
 
+                //TODO ajustar numeros
                 if(creaturesKilled >= 100){
                     if(!messageSend){
                         ((ServerPlayerEntity) player).sendStatusMessage(new TranslationTextComponent("Your mob killed level is activated"), false);
