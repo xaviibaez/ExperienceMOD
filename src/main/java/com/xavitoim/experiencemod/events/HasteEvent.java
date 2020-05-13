@@ -26,15 +26,15 @@ public class HasteEvent {
 
     @SubscribeEvent
     public static void hasteEvent(BreakEvent event) {
+        int blocksBreakRock = 0;
+        Collection collectionOfBlocks =  ForgeRegistries.BLOCKS.getValues();
+        List<Block> listBlocksBreak = new ArrayList<>(collectionOfBlocks);
+
         if(activated) {
             LivingEntity player = event.getPlayer();
 
             if(player instanceof ServerPlayerEntity){
                 ServerStatisticsManager statisticsFromPlayer = ((ServerPlayerEntity) player).getStats();
-
-                Collection collectionOfBlocks =  ForgeRegistries.BLOCKS.getValues();
-                List<Block> listBlocksBreak = new ArrayList<>(collectionOfBlocks);
-                int blocksBreakRock = 0;
 
                 for(Block b : listBlocksBreak){
                     if(b.getMaterial(b.getDefaultState()) == Material.ROCK){
