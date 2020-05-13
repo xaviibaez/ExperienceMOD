@@ -10,7 +10,6 @@ import net.minecraft.potion.Effects;
 import net.minecraft.stats.ServerStatisticsManager;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -36,9 +35,9 @@ public class HasteEvent {
             if(player instanceof ServerPlayerEntity){
                 ServerStatisticsManager statisticsFromPlayer = ((ServerPlayerEntity) player).getStats();
 
-                for(Block b : listBlocksBreak){
-                    if(b.getMaterial(b.getDefaultState()) == Material.ROCK){
-                        blocksBreakRock = blocksBreakRock + statisticsFromPlayer.getValue(Stats.BLOCK_MINED.get(b));
+                for(Block block : listBlocksBreak){
+                    if(block.getMaterial(block.getDefaultState()) == Material.ROCK){
+                        blocksBreakRock = blocksBreakRock + statisticsFromPlayer.getValue(Stats.BLOCK_MINED.get(block));
                     }
                 }
 
