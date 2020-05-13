@@ -41,7 +41,7 @@ public class HasteEvent {
                     }
                 }
 
-                if(blocksBreakRock >= 100){
+                if(blocksBreakRock >= 1){
                     if(!messageSend){
                         ((ServerPlayerEntity) player).sendStatusMessage(new TranslationTextComponent("Your haste level is activated"), false);
                         ExperienceMod.LOGGER.info("Blocks destroyed - " + blocksBreakRock);
