@@ -44,26 +44,16 @@ public class AthleticsEvent {
                                 EffectInstance(Effects.JUMP_BOOST, 50, jumpsMade/100000));
                     }
 
+                    //TODO crear clase separada para SPEED Effect con el evento TickEvent.PlayerTickEvent
                     if(distanceTraveled >= 5000) {
                         if (!messageSend) {
                             ((ServerPlayerEntity) player).sendStatusMessage(new TranslationTextComponent("Your run level is activated"), false);
                             ExperienceMod.LOGGER.info("Distance Traveled - " + distanceTraveled);
+                            messageSend = true;
                         }
                         player.addPotionEffect(new
-                                EffectInstance(Effects.SPEED, 50, distanceTraveled / 100000));
+                                EffectInstance(Effects.SPEED, 50, distanceTraveled/100000));
                     }
-
-                    /*if(distanceSwam >= 1) {
-                        if(player.isInWater() && KeyboardHelper.isHoldingSpace()){
-                            if (!messageSend) {
-                                ((ServerPlayerEntity) player).sendStatusMessage(new TranslationTextComponent("Your swim level is activated"), false);
-                                ExperienceMod.LOGGER.info("Distance Swam - " + distanceSwam);
-                                messageSend = true;
-                            }
-                            player.addPotionEffect(new
-                                    EffectInstance(Effects.DOLPHINS_GRACE, 50, distanceSwam / 100000));
-                        }
-                    }*/
                 }
             }
         }
