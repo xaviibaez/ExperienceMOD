@@ -19,7 +19,7 @@ public class CombatEvent {
 
     @SubscribeEvent
     public static void combatEvent(AttackEntityEvent event) {
-        int creaturesKilled = 0;
+        int creaturesKilled;
 
         if(activated) {
             LivingEntity player = event.getPlayer();
