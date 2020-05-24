@@ -1,6 +1,7 @@
 package com.xavitoim.experiencemod.events;
 
 import com.xavitoim.experiencemod.ExperienceMod;
+import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.potion.EffectInstance;
@@ -28,7 +29,7 @@ public class CombatEvent {
                 ServerStatisticsManager statisticsFromPlayer = ((ServerPlayerEntity) player).getStats();
                 creaturesKilled = statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.MOB_KILLS));
 
-                if(creaturesKilled >= 1){
+                if(event.getTarget().getType().getClassification() == EntityClassification.MONSTER){
                     if(!messageSend){
                         ((ServerPlayerEntity) player).sendStatusMessage(new TranslationTextComponent("Your mob killed level is activated"), false);
                         ExperienceMod.LOGGER.info("Mobs killed - " + creaturesKilled);
