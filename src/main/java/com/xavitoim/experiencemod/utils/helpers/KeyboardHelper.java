@@ -25,4 +25,12 @@ public class KeyboardHelper {
     public static boolean isHoldingSpace() {
         return InputMappings.isKeyDown(WINDOW, GLFW.GLFW_KEY_SPACE);
     }
+
+    @OnlyIn(Dist.CLIENT)
+    public static boolean isHoldingWASD() {
+        return InputMappings.isKeyDown(WINDOW, GLFW.GLFW_KEY_W) ||
+                InputMappings.isKeyDown(WINDOW, GLFW.GLFW_KEY_A) ||
+                InputMappings.isKeyDown(WINDOW, GLFW.GLFW_KEY_S) ||
+                InputMappings.isKeyDown(WINDOW, GLFW.GLFW_KEY_D);
+    }
 }
