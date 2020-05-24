@@ -1,6 +1,7 @@
 package com.xavitoim.experiencemod.events;
 
 import com.xavitoim.experiencemod.ExperienceMod;
+import com.xavitoim.experiencemod.utils.helpers.KeyboardHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.potion.EffectInstance;
@@ -15,7 +16,6 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = ExperienceMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class RunEvent {
     private static final boolean activated = true;
-    private static boolean messageSend;
 
     @SubscribeEvent
     public static void runEvent(TickEvent.PlayerTickEvent event) {
@@ -28,13 +28,10 @@ public class RunEvent {
                 int distanceTraveled = statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.WALK_ONE_CM)) +
                         statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.SPRINT_ONE_CM));
 
-                if (!messageSend) {
-                    ((ServerPlayerEntity) player).sendStatusMessage(new TranslationTextComponent("Your run level is activated"), false);
-                    ExperienceMod.LOGGER.info("Distance Traveled - " + distanceTraveled);
-                    messageSend = true;
+                if(KeyboardHelper.isHoldingWASD()){
+                    player.addPotionEffect(new
+                            EffectInstance(Effects.SPEED, 50, distanceTraveled/100000));
                 }
-                player.addPotionEffect(new
-                        EffectInstance(Effects.SPEED, 50, distanceTraveled/100000));
             }
         }
     }
