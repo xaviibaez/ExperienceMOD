@@ -7,9 +7,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.stats.ServerStatisticsManager;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -21,7 +19,6 @@ import java.util.List;
 @Mod.EventBusSubscriber(modid = ExperienceMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class MineEvent {
     private static final boolean activated = true;
-    private static boolean messageSend;
 
     @SubscribeEvent
     public static void hasteEvent(BreakEvent event) {
@@ -33,20 +30,14 @@ public class MineEvent {
             LivingEntity player = event.getPlayer();
 
             if(player instanceof ServerPlayerEntity){
-                ServerStatisticsManager statisticsFromPlayer = ((ServerPlayerEntity) player).getStats();
 
                 for(Block block : listBlocksBreak){
                     if(block.getMaterial(block.getDefaultState()) == Material.ROCK){
-                        blocksBreakRock = blocksBreakRock + statisticsFromPlayer.getValue(Stats.BLOCK_MINED.get(block));
+                        blocksBreakRock = blocksBreakRock + ((ServerPlayerEntity) player).getStats().getValue(Stats.BLOCK_MINED.get(block));
                     }
                 }
 
                 if(event.getState().getBlock().getMaterial(event.getState()) == Material.ROCK){
-                    if(!messageSend){
-                        ((ServerPlayerEntity) player).sendStatusMessage(new TranslationTextComponent("Your haste level is activated"), false);
-                        ExperienceMod.LOGGER.info("Blocks destroyed - " + blocksBreakRock);
-                        messageSend = true;
-                    }
                     player.addPotionEffect(new
                             EffectInstance(Effects.HASTE, 50, blocksBreakRock/100000));
                 }
