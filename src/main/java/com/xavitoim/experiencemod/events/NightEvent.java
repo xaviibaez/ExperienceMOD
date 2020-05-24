@@ -41,6 +41,7 @@ public class NightEvent {
 
                     Iterator<EffectInstance> iterator = player.activePotionsMap.values().iterator();
 
+                    //TODO hacer esta vaina
                     while(iterator.hasNext()) {
                         EffectInstance effect = iterator.next();
                         if(net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new net.minecraftforge.event.entity.living.PotionEvent.PotionRemoveEvent(player, effect))) continue;
@@ -55,6 +56,6 @@ public class NightEvent {
     @SubscribeEvent
     public static void nightEvent(PotionEvent.PotionRemoveEvent event) {
 
-        
+
     }
 }
