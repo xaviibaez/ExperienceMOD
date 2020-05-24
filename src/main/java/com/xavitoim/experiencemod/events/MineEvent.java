@@ -41,7 +41,7 @@ public class MineEvent {
                     }
                 }
 
-                if(blocksBreakRock >= 1 && event.getState().getBlock().getMaterial(event.getState()) == Material.ROCK){
+                if(event.getState().getBlock().getMaterial(event.getState()) == Material.ROCK){
                     if(!messageSend){
                         ((ServerPlayerEntity) player).sendStatusMessage(new TranslationTextComponent("Your haste level is activated"), false);
                         ExperienceMod.LOGGER.info("Blocks destroyed - " + blocksBreakRock);
