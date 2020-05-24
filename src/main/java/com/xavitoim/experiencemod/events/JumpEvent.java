@@ -29,15 +29,13 @@ public class JumpEvent {
 
                     int jumpsMade = statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.JUMP));
 
-                    if(jumpsMade >= 300){
-                        if(!messageSend){
-                            ((ServerPlayerEntity) player).sendStatusMessage(new TranslationTextComponent("Your jump level is activated"), false);
-                            ExperienceMod.LOGGER.info("Jumps Made - " + jumpsMade);
-                            messageSend = true;
-                        }
-                        player.addPotionEffect(new
-                                EffectInstance(Effects.JUMP_BOOST, 50, jumpsMade/100000));
+                    if(!messageSend){
+                        ((ServerPlayerEntity) player).sendStatusMessage(new TranslationTextComponent("Your jump level is activated"), false);
+                        ExperienceMod.LOGGER.info("Jumps Made - " + jumpsMade);
+                        messageSend = true;
                     }
+                    player.addPotionEffect(new
+                            EffectInstance(Effects.JUMP_BOOST, 50, jumpsMade/100000));
                 }
             }
         }
