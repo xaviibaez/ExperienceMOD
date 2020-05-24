@@ -27,21 +27,17 @@ public class SwimEvent {
 
                 int distanceSwam = statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.SWIM_ONE_CM));
 
-                if (distanceSwam >= 1) {
-                    if (player.isInWater()) {
-                        ExperienceMod.LOGGER.info("check 0");
+                if (player.isInWater()) {
 
-                        if (!messageSend) {
-                            ((ServerPlayerEntity) player).sendStatusMessage(new TranslationTextComponent("Your swim level is activated"), false);
-                            ExperienceMod.LOGGER.info("Distance Swam - " + distanceSwam);
-                            messageSend = true;
-                        }
-                        player.addPotionEffect(new
-                                EffectInstance(Effects.DOLPHINS_GRACE, 50, distanceSwam/100000));
+                    if (!messageSend) {
+                        ((ServerPlayerEntity) player).sendStatusMessage(new TranslationTextComponent("Your swim level is activated"), false);
+                        ExperienceMod.LOGGER.info("Distance Swam - " + distanceSwam);
+                        messageSend = true;
                     }
+                    player.addPotionEffect(new
+                            EffectInstance(Effects.DOLPHINS_GRACE, 50, distanceSwam/100000));
                 }
             }
-
         }
     }
 }
