@@ -26,6 +26,7 @@ public class SwimEvent {
                 ServerStatisticsManager statisticsFromPlayer = ((ServerPlayerEntity) player).getStats();
 
                 int distanceSwam = statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.SWIM_ONE_CM));
+                int breathUnderWater = statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.WALK_UNDER_WATER_ONE_CM));
 
                 if (player.isInWater()) {
 
@@ -36,6 +37,8 @@ public class SwimEvent {
                     }
                     player.addPotionEffect(new
                             EffectInstance(Effects.DOLPHINS_GRACE, 50, distanceSwam/100000));
+                    player.addPotionEffect(new
+                            EffectInstance(Effects.WATER_BREATHING, 50, breathUnderWater/100000));
                 }
             }
         }
