@@ -28,15 +28,13 @@ public class RunEvent {
                 int distanceTraveled = statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.WALK_ONE_CM)) +
                         statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.SPRINT_ONE_CM));
 
-                if(distanceTraveled >= 5000) {
-                    if (!messageSend) {
-                        ((ServerPlayerEntity) player).sendStatusMessage(new TranslationTextComponent("Your run level is activated"), false);
-                        ExperienceMod.LOGGER.info("Distance Traveled - " + distanceTraveled);
-                        messageSend = true;
-                    }
-                    player.addPotionEffect(new
-                            EffectInstance(Effects.SPEED, 50, distanceTraveled/100000));
+                if (!messageSend) {
+                    ((ServerPlayerEntity) player).sendStatusMessage(new TranslationTextComponent("Your run level is activated"), false);
+                    ExperienceMod.LOGGER.info("Distance Traveled - " + distanceTraveled);
+                    messageSend = true;
                 }
+                player.addPotionEffect(new
+                        EffectInstance(Effects.SPEED, 50, distanceTraveled/100000));
             }
         }
     }
