@@ -35,19 +35,19 @@ public class NightEvent {
                     }
                 }
                 else{
-                    ExperienceMod.LOGGER.info("check 0 - " + player.getActivePotionEffects().size());
+                    //ExperienceMod.LOGGER.info("check 0 - " + player.getActivePotionEffects().size());
                     player.getActivePotionEffects().remove(Effects.NIGHT_VISION);
 
 
-                    Iterator<EffectInstance> iterator = player.activePotionsMap.values().iterator();
+                    //Iterator<EffectInstance> iterator = ((ServerPlayerEntity) player).activePotionsMap.values().iterator();
 
                     //TODO hacer esta vaina
-                    while(iterator.hasNext()) {
+                    /*while(iterator.hasNext()) {
                         EffectInstance effect = iterator.next();
                         if(net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new net.minecraftforge.event.entity.living.PotionEvent.PotionRemoveEvent(player, effect))) continue;
-                        ((ServerPlayerEntity) player).onFinishedPotionEffect(effect);
+                        //((ServerPlayerEntity) player).onFinishedPotionEffect(effect);
                         iterator.remove();
-                    }
+                    }*/
                 }
             }
         }
