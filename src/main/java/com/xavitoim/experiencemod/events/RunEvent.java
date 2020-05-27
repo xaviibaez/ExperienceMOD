@@ -23,12 +23,20 @@ public class RunEvent {
             LivingEntity player = event.player;
 
             if(player instanceof ServerPlayerEntity){
+
+                double xi = ((ServerPlayerEntity) player).chasingPosX;
+                double yi = ((ServerPlayerEntity) player).chasingPosY;
+                double zi = ((ServerPlayerEntity) player).chasingPosZ;
+
+                //TODO mirarase las capabilities
+                ExperienceMod.LOGGER.info("x = " + xi + " y = " + yi + " z = " + zi);
+
                 ServerStatisticsManager statisticsFromPlayer = ((ServerPlayerEntity)player).getStats();
 
                 int distanceTraveled = statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.WALK_ONE_CM)) +
                         statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.SPRINT_ONE_CM));
 
-                if(KeyboardHelper.isHoldingWASD()){
+                if(!KeyboardHelper.isHoldingWASD()){
                     player.addPotionEffect(new
                             EffectInstance(Effects.SPEED, 50, distanceTraveled/100000));
                 }
