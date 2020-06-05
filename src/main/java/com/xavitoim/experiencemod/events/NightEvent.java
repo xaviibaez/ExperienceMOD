@@ -28,7 +28,7 @@ public class NightEvent {
 
                 if (!world.isDaytime()) {
                     player.addPotionEffect(new
-                            EffectInstance(Effects.NIGHT_VISION, 500, nightVisionLevel / 100000));
+                            EffectInstance(Effects.NIGHT_VISION, 250, nightVisionLevel / 100000));
                 }
             }
         }
