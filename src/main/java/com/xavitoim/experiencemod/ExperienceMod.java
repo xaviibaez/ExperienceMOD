@@ -1,6 +1,8 @@
 package com.xavitoim.experiencemod;
 
+import com.xavitoim.experiencemod.init.EnchantmentInit;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -20,9 +22,14 @@ public class ExperienceMod
     public static ExperienceMod instance;
 
     public ExperienceMod() {
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+        final IEventBus modEventBus= FMLJavaModLoadingContext.get().getModEventBus();
 
+        //FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        //FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+
+        EnchantmentInit.ENCHANTMENTS.register(modEventBus);
+
+        instance = this;
         MinecraftForge.EVENT_BUS.register(this);
     }
 
