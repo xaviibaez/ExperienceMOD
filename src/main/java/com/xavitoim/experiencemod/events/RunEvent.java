@@ -14,23 +14,23 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = ExperienceMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class RunEvent {
-    private static final boolean activated = true;
-
     @SubscribeEvent
     public static void runEvent(TickEvent.PlayerTickEvent event) {
-        if(activated) {
-            LivingEntity player = event.player;
+        runEventSpeed(event);
+    }
 
-            if(player instanceof ServerPlayerEntity){
-                ServerStatisticsManager statisticsFromPlayer = ((ServerPlayerEntity)player).getStats();
+    public static void runEventSpeed(TickEvent.PlayerTickEvent event) {
+        LivingEntity player = event.player;
 
-                int distanceTraveled = statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.WALK_ONE_CM)) +
-                        statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.SPRINT_ONE_CM));
+        if(player instanceof ServerPlayerEntity){
+            ServerStatisticsManager statisticsFromPlayer = ((ServerPlayerEntity)player).getStats();
 
-                if(KeyboardHelper.isHoldingWASD()){
-                    player.addPotionEffect(new
-                            EffectInstance(Effects.SPEED, 50, distanceTraveled/100000));
-                }
+            int distanceTraveled = statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.WALK_ONE_CM)) +
+                    statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.SPRINT_ONE_CM));
+
+            if(KeyboardHelper.isHoldingWASD()){
+                player.addPotionEffect(new
+                        EffectInstance(Effects.SPEED, 50, distanceTraveled/100000));
             }
         }
     }
