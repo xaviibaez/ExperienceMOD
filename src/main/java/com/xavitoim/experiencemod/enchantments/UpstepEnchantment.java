@@ -1,12 +1,17 @@
 package com.xavitoim.experiencemod.enchantments;
 
 import com.xavitoim.experiencemod.ExperienceMod;
+import com.xavitoim.experiencemod.init.EnchantmentInit;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.Map;
 
 public class UpstepEnchantment extends Enchantment {
 
@@ -30,7 +35,19 @@ public class UpstepEnchantment extends Enchantment {
 
         @SubscribeEvent
         public static void runEvent(TickEvent.PlayerTickEvent event) {
-            com.xavitoim.experiencemod.events.RunEvent.runEventSpeed(event);
+            if (event.phase == TickEvent.Phase.END) {
+                if (event.player.getItemStackFromSlot(EquipmentSlotType.FEET).isEmpty()) {
+                    return;
+                }
+                else{
+                    ItemStack itemOnFeet = event.player.getItemStackFromSlot(EquipmentSlotType.FEET);
+                    Map<Enchantment, Integer> enchantmentsOnItemOnFeet = EnchantmentHelper.getEnchantments(itemOnFeet);
+
+                    if (enchantmentsOnItemOnFeet.containsKey(EnchantmentInit.UPSTEP)) {
+                        com.xavitoim.experiencemod.events.RunEvent.runEventLogic(event);
+                    }
+                }
+            }
         }
     }
 }
