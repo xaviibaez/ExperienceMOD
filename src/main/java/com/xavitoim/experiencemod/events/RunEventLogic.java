@@ -9,12 +9,7 @@ import net.minecraft.stats.ServerStatisticsManager;
 import net.minecraft.stats.Stats;
 import net.minecraftforge.event.TickEvent;
 
-//@Mod.EventBusSubscriber(modid = ExperienceMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class RunEvent {
-    //@SubscribeEvent
-    public static void runEvent(TickEvent.PlayerTickEvent event) {
-        runEventLogic(event);
-    }
+public class RunEventLogic {
 
     public static void runEventLogic(TickEvent.PlayerTickEvent event) {
         LivingEntity player = event.player;
