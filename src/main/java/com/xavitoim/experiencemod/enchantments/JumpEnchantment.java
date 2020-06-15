@@ -41,7 +41,7 @@ public class JumpEnchantment extends Enchantment {
                 ItemStack itemOnFeet = event.getEntityLiving().getItemStackFromSlot(EquipmentSlotType.FEET);
                 Map<Enchantment, Integer> enchantmentsOnItemOnFeet = EnchantmentHelper.getEnchantments(itemOnFeet);
 
-                if (enchantmentsOnItemOnFeet.containsKey(EnchantmentInit.RUN.get())) {
+                if (enchantmentsOnItemOnFeet.containsKey(EnchantmentInit.JUMP.get())) {
                     JumpEventLogic.jumpEventLogic(event);
                 }
             }
