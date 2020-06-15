@@ -20,7 +20,7 @@ public class RunEventLogic {
             int distanceTraveled = statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.WALK_ONE_CM)) +
                     statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.SPRINT_ONE_CM));
 
-            if(KeyboardHelper.isHoldingWASD()){
+            if(KeyboardHelper.isHoldingWASD() && !player.isInWater()){
                 player.addPotionEffect(new
                         EffectInstance(Effects.SPEED, 50, distanceTraveled/100000));
             }
