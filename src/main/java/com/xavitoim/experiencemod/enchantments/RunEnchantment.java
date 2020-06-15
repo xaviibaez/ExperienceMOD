@@ -35,14 +35,12 @@ public class RunEnchantment extends Enchantment {
 
         @SubscribeEvent
         public static void runEvent(TickEvent.PlayerTickEvent event) {
-            if (event.phase == TickEvent.Phase.END) {
-                if(!event.player.getItemStackFromSlot(EquipmentSlotType.FEET).isEmpty()){
-                    ItemStack itemOnFeet = event.player.getItemStackFromSlot(EquipmentSlotType.FEET);
-                    Map<Enchantment, Integer> enchantmentsOnItemOnFeet = EnchantmentHelper.getEnchantments(itemOnFeet);
+            if(!event.player.getItemStackFromSlot(EquipmentSlotType.FEET).isEmpty()){
+                ItemStack itemOnFeet = event.player.getItemStackFromSlot(EquipmentSlotType.FEET);
+                Map<Enchantment, Integer> enchantmentsOnItemOnFeet = EnchantmentHelper.getEnchantments(itemOnFeet);
 
-                    if (enchantmentsOnItemOnFeet.containsKey(EnchantmentInit.RUN.get())) {
-                        RunEventLogic.runEventLogic(event);
-                    }
+                if (enchantmentsOnItemOnFeet.containsKey(EnchantmentInit.RUN.get())) {
+                    RunEventLogic.runEventLogic(event);
                 }
             }
         }
