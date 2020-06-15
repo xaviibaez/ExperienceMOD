@@ -1,7 +1,6 @@
 package com.xavitoim.experiencemod.enchantments;
 
 import com.xavitoim.experiencemod.ExperienceMod;
-import com.xavitoim.experiencemod.events.RunEventLogic;
 import com.xavitoim.experiencemod.events.SwimEventLogic;
 import com.xavitoim.experiencemod.init.EnchantmentInit;
 import net.minecraft.enchantment.Enchantment;
