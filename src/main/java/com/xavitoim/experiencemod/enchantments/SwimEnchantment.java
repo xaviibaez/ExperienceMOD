@@ -40,7 +40,7 @@ public class SwimEnchantment extends Enchantment {
                 ItemStack itemOnFeet = event.player.getItemStackFromSlot(EquipmentSlotType.FEET);
                 Map<Enchantment, Integer> enchantmentsOnItemOnFeet = EnchantmentHelper.getEnchantments(itemOnFeet);
 
-                if (enchantmentsOnItemOnFeet.containsKey(EnchantmentInit.RUN.get())) {
+                if (enchantmentsOnItemOnFeet.containsKey(EnchantmentInit.SWIM.get())) {
                     SwimEventLogic.swimEventLogic(event);
                 }
             }
