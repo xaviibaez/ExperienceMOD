@@ -1,6 +1,5 @@
 package com.xavitoim.experiencemod.events;
 
-import com.xavitoim.experiencemod.ExperienceMod;
 import com.xavitoim.experiencemod.utils.helpers.KeyboardHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -9,8 +8,6 @@ import net.minecraft.potion.Effects;
 import net.minecraft.stats.ServerStatisticsManager;
 import net.minecraft.stats.Stats;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 
 public class SwimEventLogic {
     private static final boolean activated = true;
