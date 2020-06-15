@@ -2,14 +2,12 @@ package com.xavitoim.experiencemod.enchantments;
 
 import com.xavitoim.experiencemod.ExperienceMod;
 import com.xavitoim.experiencemod.events.JumpEventLogic;
-import com.xavitoim.experiencemod.events.RunEventLogic;
 import com.xavitoim.experiencemod.init.EnchantmentInit;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
