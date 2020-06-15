@@ -12,12 +12,10 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = ExperienceMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class SwimEventLogic {
     private static final boolean activated = true;
 
-    @SubscribeEvent
-    public static void swimEvent(TickEvent.PlayerTickEvent event) {
+    public static void swimEventLogic(TickEvent.PlayerTickEvent event) {
         if (activated) {
             LivingEntity player = event.player;
 
