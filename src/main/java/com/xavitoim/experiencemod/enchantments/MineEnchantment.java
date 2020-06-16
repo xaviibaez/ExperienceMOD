@@ -28,6 +28,7 @@ public class MineEnchantment extends Enchantment {
     @Mod.EventBusSubscriber(modid = ExperienceMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
     public static class MineEvent {
 
+        //TODO no va, se activa siempre
         @SubscribeEvent
         public static void mineEvent(BlockEvent.BreakEvent event) {
             MineEventLogic.hasteEvent(event);

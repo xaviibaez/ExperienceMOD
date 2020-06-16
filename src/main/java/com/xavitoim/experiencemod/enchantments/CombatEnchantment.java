@@ -27,6 +27,7 @@ public class CombatEnchantment extends Enchantment {
     @Mod.EventBusSubscriber(modid = ExperienceMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
     public static class CombatEvent {
 
+        //TODO no va, se activa siempre
         @SubscribeEvent
         public static void combatEvent(AttackEntityEvent event) {
             CombatEventLogic.combatEvent(event);

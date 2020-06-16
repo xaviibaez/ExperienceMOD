@@ -23,6 +23,7 @@ public class SwimEventLogic {
                 int breathUnderWater = statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.WALK_UNDER_WATER_ONE_CM));
 
                 if (player.isInWater()) {
+                    //TODO separalo en otro evento para que se pueda poner este encantamiento en HEAD en lugar de FEET
                     player.addPotionEffect(new
                             EffectInstance(Effects.WATER_BREATHING, 50, breathUnderWater/100000));
                     if(KeyboardHelper.isHoldingWASD()){
