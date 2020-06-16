@@ -43,7 +43,6 @@ public class JumpEnchantment extends Enchantment {
                     JumpEventLogic.jumpEventLogic(event);
                 }
             }
-
         }
     }
 }
