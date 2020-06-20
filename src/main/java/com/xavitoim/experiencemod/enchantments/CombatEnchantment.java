@@ -2,7 +2,6 @@ package com.xavitoim.experiencemod.enchantments;
 
 import com.xavitoim.experiencemod.ExperienceMod;
 import com.xavitoim.experiencemod.events.CombatEventLogic;
-import com.xavitoim.experiencemod.events.NightEventLogic;
 import com.xavitoim.experiencemod.init.EnchantmentInit;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
