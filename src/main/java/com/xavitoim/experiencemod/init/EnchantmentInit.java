@@ -28,9 +28,8 @@ public class EnchantmentInit {
     //TODO testear
     public static final RegistryObject<Enchantment> NIGHT = ENCHANTMENTS.register("night",
             () -> new NightEnchantment(Enchantment.Rarity.RARE, EnchantmentType.ARMOR_HEAD,
-                    new EquipmentSlotType[] {EquipmentSlotType.CHEST}));
+                    new EquipmentSlotType[] {EquipmentSlotType.HEAD}));
 
-    //TODO testear
     public static final RegistryObject<Enchantment> COMBAT = ENCHANTMENTS.register("combat",
             () -> new CombatEnchantment(Enchantment.Rarity.RARE, EnchantmentType.WEAPON,
                     new EquipmentSlotType[] {EquipmentSlotType.MAINHAND}));
