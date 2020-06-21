@@ -24,8 +24,11 @@ public class EnchantmentInit {
     public static final RegistryObject<Enchantment> SWIM = ENCHANTMENTS.register("swim",
             () -> new SwimEnchantment(Enchantment.Rarity.RARE, EnchantmentType.ARMOR_FEET,
                     new EquipmentSlotType[] {EquipmentSlotType.FEET}));
+    //TODO test
+    public static final RegistryObject<Enchantment> WATERBREATH = ENCHANTMENTS.register("waterbreath",
+            () -> new NightEnchantment(Enchantment.Rarity.RARE, EnchantmentType.ARMOR_HEAD,
+                    new EquipmentSlotType[] {EquipmentSlotType.HEAD}));
 
-    //TODO testear
     public static final RegistryObject<Enchantment> NIGHT = ENCHANTMENTS.register("night",
             () -> new NightEnchantment(Enchantment.Rarity.RARE, EnchantmentType.ARMOR_HEAD,
                     new EquipmentSlotType[] {EquipmentSlotType.HEAD}));
@@ -34,7 +37,6 @@ public class EnchantmentInit {
             () -> new CombatEnchantment(Enchantment.Rarity.RARE, EnchantmentType.WEAPON,
                     new EquipmentSlotType[] {EquipmentSlotType.MAINHAND}));
 
-    //TODO testear
     public static final RegistryObject<Enchantment> MINE = ENCHANTMENTS.register("mine",
             () -> new MineEnchantment(Enchantment.Rarity.RARE, EnchantmentType.DIGGER,
                     new EquipmentSlotType[] {EquipmentSlotType.MAINHAND}));
