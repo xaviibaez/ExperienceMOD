@@ -10,27 +10,18 @@ import net.minecraft.stats.Stats;
 import net.minecraftforge.event.TickEvent;
 
 public class SwimEventLogic {
-    private static final boolean activated = true;
 
     public static void swimEventLogic(TickEvent.PlayerTickEvent event) {
-        if (activated) {
-            LivingEntity player = event.player;
+        LivingEntity player = event.player;
 
-            if (player instanceof ServerPlayerEntity) {
-                ServerStatisticsManager statisticsFromPlayer = ((ServerPlayerEntity) player).getStats();
+        if (player instanceof ServerPlayerEntity) {
+            ServerStatisticsManager statisticsFromPlayer = ((ServerPlayerEntity) player).getStats();
 
-                int distanceSwam = statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.SWIM_ONE_CM));
-                int breathUnderWater = statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.WALK_UNDER_WATER_ONE_CM));
+            int distanceSwam = statisticsFromPlayer.getValue(Stats.CUSTOM.get(Stats.SWIM_ONE_CM));
 
-                if (player.isInWater()) {
-                    //TODO separalo en otro evento para que se pueda poner este encantamiento en HEAD en lugar de FEET
-                    player.addPotionEffect(new
-                            EffectInstance(Effects.WATER_BREATHING, 50, breathUnderWater/100000));
-                    if(KeyboardHelper.isHoldingWASD()){
-                        player.addPotionEffect(new
-                                EffectInstance(Effects.DOLPHINS_GRACE, 50, distanceSwam/100000));
-                    }
-                }
+            if (player.isInWater() && KeyboardHelper.isHoldingWASD()) {
+                player.addPotionEffect(new
+                        EffectInstance(Effects.DOLPHINS_GRACE, 50, distanceSwam/100000));
             }
         }
     }
