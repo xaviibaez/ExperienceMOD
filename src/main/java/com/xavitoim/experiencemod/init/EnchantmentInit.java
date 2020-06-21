@@ -24,7 +24,7 @@ public class EnchantmentInit {
     public static final RegistryObject<Enchantment> SWIM = ENCHANTMENTS.register("swim",
             () -> new SwimEnchantment(Enchantment.Rarity.RARE, EnchantmentType.ARMOR_FEET,
                     new EquipmentSlotType[] {EquipmentSlotType.FEET}));
-    //TODO test
+
     public static final RegistryObject<Enchantment> WATERBREATH = ENCHANTMENTS.register("waterbreath",
             () -> new NightEnchantment(Enchantment.Rarity.RARE, EnchantmentType.ARMOR_HEAD,
                     new EquipmentSlotType[] {EquipmentSlotType.HEAD}));
