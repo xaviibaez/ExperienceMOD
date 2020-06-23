@@ -1,3 +1,10 @@
 {
-  "enchantment.experiencemod.run": "Run I"
+  "enchantment.experiencemod.run": "Run I",
+  "enchantment.experiencemod.jump": "Jump I",
+  "enchantment.experiencemod.swim": "Swim I",
+  "enchantment.experiencemod.waterbreath": "Water breath I",
+  "enchantment.experiencemod.night": "Night I",
+  "enchantment.experiencemod.combat": "Combat I",
+  "enchantment.experiencemod.mine": "Mine I"
+
 }
