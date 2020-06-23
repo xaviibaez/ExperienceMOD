@@ -18,12 +18,12 @@ displayURL="http://example.com/" #optional
 
 logoFile="examplemod.png" #optional
 
-credits="Thanks for this example mod goes to Java" #optional
+credits="Thanks to all community of forge developers to help me out with any questions I've asked." #optional
 
 authors="XavitoIM" #optional
 
 description='''
-Experience mod description
+Experience mod give you up to 7 new enchantments that give's you different effects and increments while you progress on your game!
 '''
 
 [[dependencies.experiencemod]] #optional
